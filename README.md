@@ -22,16 +22,19 @@ Usage
 
 To use the the NetEEPROM library the sketch will need to contain the
 following includes:
+
     #include <EEPROM.h>
     #include <SPI.h>
     #include <Ethernet.h>
     #include <NetEEPROM.h>
 
 To set a MAC address with DHCP configuration, use the following code:
+
     byte mac[6] = { 0xCA, 0xFE, 0xBA, 0xBE, 0x00, 0x00 };
     NetEeprom.writeDhcpConfig(mac);
 
 To set a MAC address with manual IP configuration, use the following code:
+
     byte mac[6] = { 0xCA, 0xFE, 0xBA, 0xBE, 0x00, 0x00 };
     byte ip[4] = { 192, 168, 1, 100 };
     byte dns[4] = { 8, 8, 8, 8 };
@@ -41,5 +44,6 @@ To set a MAC address with manual IP configuration, use the following code:
 
 To set up the Ethernet adapter with configuration from EEPROM, use the
 following line:
+
     NetEeprom.begin();
 
