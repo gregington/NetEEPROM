@@ -80,6 +80,7 @@ int NetEEPROM::checkMagic() {
 }
 
 void NetEEPROM::generateRandomMac(byte mac[]) {
+  randomSeed(analogRead(NET_RANDOM_ANALOG_PIN));
   mac[0] = 0xDE;
   mac[1] = 0xAD;
   mac[2] = 0xBE;

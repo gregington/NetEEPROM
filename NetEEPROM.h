@@ -14,6 +14,11 @@
 #define NET_EEPROM_OFFSET 0
 #endif
 
+/* The pin from which an anlog reading will be taken to generate a random MAC. */
+#ifndef NET_RANDOM_ANALOG_PIN
+#define NET_RANDOM_ANALOG_PIN 0
+#endif
+
 #ifndef NET_EEPROM_H
 #define NET_EEPROM_H
 
