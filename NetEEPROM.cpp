@@ -21,7 +21,7 @@ void NetEEPROM::begin() {
   }
 
   if (isDhcp()) {
-	Ethernet.begin(mac);
+    Ethernet.begin(mac);
   } else {
     byte ip[4];
     byte dns[4];
