@@ -3,7 +3,7 @@
 #include <Ethernet.h>
 #include <NetEEPROM.h>
 
-/* Example of how to configure the network interface from configuration stored in EEPROM. /*
+/* Example of how to configure the network interface from configuration stored in EEPROM. */
 void setup() {
   // Instantiate network from stored netowrk paramters in EEPROM.
   // If not in EEPROM then a random MAC will be generated and stored in EEPROM
