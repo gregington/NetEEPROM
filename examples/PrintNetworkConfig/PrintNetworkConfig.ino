@@ -6,6 +6,9 @@
 /* Prints the network configuration stored in EEPROM. */
 void setup() {
   Serial.begin(9600);
+  while (!Serial) {
+    // Wait for serial for Leonardo
+  }
 
   if (NetEeprom.checkMagic()) {
     byte mac[6];
