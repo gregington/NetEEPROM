@@ -1,0 +1,12 @@
+NetEEPROM	KEYWORD1
+begin	KEYWORD2
+writeDhcpConfig	KEYWORD2
+writeManualConfig	KEYWORD2
+readMac	KEYWORD2
+checkMagic	KEYWORD2
+isDhcp	KEYWORD2
+readIp	KEYWORD2
+readDns	KEYWORD2
+readGateway	KEYWORD2
+readSubnet	KEYWORD2
+
