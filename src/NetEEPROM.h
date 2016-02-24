@@ -6,14 +6,6 @@
  * 24 bytes of EEPROM are required to store the configuration.
  */
 
-/* The EEPROM offset at which the network configuration starts.
- * Sketches can override this by defining NET_EEPROM_OFFSET before
- * importing NetEEPROM.h.
- */
-#ifndef NET_EEPROM_OFFSET
-#define NET_EEPROM_OFFSET 0
-#endif
-
 /* The pin from which an anlog reading will be taken to generate a random MAC. */
 #ifndef NET_RANDOM_ANALOG_PIN
 #define NET_RANDOM_ANALOG_PIN 0
@@ -31,6 +23,15 @@
 class NetEEPROM {
 
   public:
+
+  NetEEPROM();
+
+  /* Sets the location in EEPROM that network configuration data will be
+   * stored. If not called, then it defaults to zero. This method should
+   * generally be called before any other methods.
+   */
+  void setEepromOffset(int offset);
+
   /* Configures the network adapter from settings stored in EEPROM.
    * If no settings can be found in EEPROM then a random MAC address
    * will be generated and the adapter will use DHCP for IP configuration,
@@ -97,6 +98,7 @@ class NetEEPROM {
   void readSubnet(byte subnet[]);
 
   private:
+  int eepromOffset;
   void generateRandomMac(byte mac[]);
   void readEEPROM(byte data[], int offset, int length);
   void writeEEPROM(byte data[], int offset, int length);

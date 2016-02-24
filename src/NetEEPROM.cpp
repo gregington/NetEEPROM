@@ -3,12 +3,20 @@
 #include "Ethernet.h"
 
 
-#define MAC_OFFSET (NET_EEPROM_OFFSET + 1)
+#define MAC_OFFSET (eepromOffset + 1)
 #define DHCP_OFFSET (MAC_OFFSET + 6)
 #define IP_OFFSET (DHCP_OFFSET + 1)
 #define DNS_OFFSET (IP_OFFSET + 4)
 #define GW_OFFSET (DNS_OFFSET + 4)
 #define SUBNET_OFFSET (GW_OFFSET + 4)
+
+NetEEPROM::NetEEPROM(void) {
+  eepromOffset = 0;
+}
+
+void NetEEPROM::setEepromOffset(int offset) {
+  eepromOffset = offset;
+}
 
 void NetEEPROM::begin() {
   delay(250); // For ethernet instantiation
@@ -76,7 +84,7 @@ void NetEEPROM::readSubnet(byte subnet[]) {
 }
 
 int NetEEPROM::checkMagic() {
-  return EEPROM.read(NET_EEPROM_OFFSET) == NET_EEPROM_MAGIC;
+  return EEPROM.read(eepromOffset) == NET_EEPROM_MAGIC;
 }
 
 void NetEEPROM::generateRandomMac(byte mac[]) {
@@ -102,7 +110,7 @@ void NetEEPROM::writeEEPROM(byte data[], int offset, int length) {
 }
 
 void NetEEPROM::writeMac(byte mac[]) {
-  EEPROM.write(NET_EEPROM_OFFSET, NET_EEPROM_MAGIC);
+  EEPROM.write(eepromOffset, NET_EEPROM_MAGIC);
   writeEEPROM(mac, MAC_OFFSET, 6);
 }
 

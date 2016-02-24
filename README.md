@@ -1,7 +1,10 @@
 NetEEPROM
 =========
 
-Arduino library that reads stores network settings to EEPROM.
+Arduino library that reads stores network settings to EEPROM. This is
+useful to associate a network configuration with a specific Arduino
+board which can then be read by many sketches without having to be
+set in each sketch.
 
 This library stores to EEPROM:
 * the MAC address of the interface
@@ -47,3 +50,18 @@ following line:
 
     NetEeprom.begin();
 
+If you wish to configure the start address in EEPROM where the network
+configuration resides, call the `setEepromOffset()` following method 
+**before** calling any other methods. If you do not call this method, then
+the default EEPROM location set set to 0. To set the network configuration at
+a custom EEPROM offset, use the following code.
+
+    NetEeprom.setEepromOffet(128);
+    byte mac[6] = { 0xCA, 0xFE, 0xBA, 0xBE, 0x00, 0x00 };
+    NetEeprom.writeDhcpConfig(mac);
+
+To read network configuration at a custom EEPROM offset, use the following
+code:
+
+    NetEeprom.setEepromOffset(128);
+    NetEeprom.begin();
