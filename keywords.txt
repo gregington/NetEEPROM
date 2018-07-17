@@ -1,5 +1,5 @@
 NetEEPROM	KEYWORD1
-setEepromOffset KEYWORD2
+setEepromOffset	KEYWORD2
 begin	KEYWORD2
 writeDhcpConfig	KEYWORD2
 writeManualConfig	KEYWORD2
